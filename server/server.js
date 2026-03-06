@@ -7,16 +7,27 @@ require("dotenv").config();
 
 const app = express();
 
+// ✅ CORS - Updated to allow all frontend origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://allredz.vercel.app",
+  "https://spices-frontend-beta.vercel.app",
+  "https://allredz.onrender.com",
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin || origin.startsWith("http://localhost") || origin.includes("vercel.app") || origin.includes("onrender.com")) {
+      if (!origin || allowedOrigins.includes(origin) || origin.startsWith("http://localhost")) {
         callback(null, true);
       } else {
-        callback(null, false);
+        callback(new Error(`CORS: ${origin} not allowed`));
       }
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
