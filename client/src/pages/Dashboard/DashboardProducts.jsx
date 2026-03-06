@@ -83,8 +83,8 @@ const DashboardProducts = () => {
                 p.image?.startsWith("http") || p.image?.startsWith("https")
                   ? p.image
                   : p.image
-                  ? `http://localhost:5000/${p.image}`
-                  : hero;
+                    ? `https://allredz.onrender.com/${p.image}`
+                    : hero;
 
               return (
                 <tr

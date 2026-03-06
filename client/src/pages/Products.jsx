@@ -36,7 +36,7 @@ const Products = () => {
         quantity: 1,
         selectedWeight: size.weight,
         selectedPrice: size.price,
-        image: product.image ? `http://localhost:5000/${product.image}` : hero,
+        image: product.image ? `https://allredz.onrender.com/${product.image}` : hero,
       });
 
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -128,7 +128,7 @@ const Products = () => {
               <div className="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
               <img
                 src={
-                  product.image ? `http://localhost:5000/${product.image}` : hero
+                  product.image ? `https://allredz.onrender.com/${product.image}` : hero
                 }
                 alt={product.name}
                 className="w-full h-48 sm:h-56 object-contain filter drop-shadow-2xl group-hover:scale-110 transition-transform duration-700 z-10"

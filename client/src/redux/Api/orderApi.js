@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const orderApi = createApi({
   reducerPath: "orderApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/order",
+    baseUrl: "https://allredz.onrender.com/api/order",
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth?.user?.token;
       if (token) headers.set("Authorization", `Bearer ${token}`);

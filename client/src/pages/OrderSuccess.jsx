@@ -14,7 +14,7 @@ const OrderSuccess = () => {
         if (!token) return;
 
         const res = await fetch(
-          "https://spices-backend-1.onrender.com/api/order/my-orders",
+          "https://allredz.onrender.com/api/order/my-orders",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

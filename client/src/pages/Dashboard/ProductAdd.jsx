@@ -179,7 +179,7 @@ const AddProduct = () => {
       productData.append("image", formData.image);
 
       const res = await fetch(
-        "http://localhost:5000/api/products/add-product",
+        "https://allredz.onrender.com/api/products/add-product",
         {
           method: "POST",
           headers: {

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // --- Configuration & Constants ---
 const RAZORPAY_KEY = "rzp_test_1234567890abcdef"; // <-- Replace with your key
-const BACKEND_URL = "http://localhost:5000/api/order";
+const BACKEND_URL = "https://allredz.onrender.com/api/order";
 
 // PREMIUM INPUT CLASS (Crystal Clean Design)
 const PREMIUM_INPUT_CLASS =
@@ -47,7 +47,7 @@ const Checkout = () => {
       selectedPrice: it.selectedPrice || (it.sizes && it.sizes[0]?.price) || 0,
       selectedWeight:
         it.selectedWeight || (it.sizes && it.sizes[0]?.weight) || "NA",
-      image: it.image || "http://localhost:5000/default.png",
+      image: it.image || "https://allredz.onrender.com/default.png",
     }));
     setCart(updated);
     setCartCount(updated.reduce((s, i) => s + (i.quantity || 1), 0));

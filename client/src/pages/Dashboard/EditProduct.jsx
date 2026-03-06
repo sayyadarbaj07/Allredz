@@ -43,7 +43,7 @@ const EditProduct = () => {
           category: product.category || "", // Optional
           imageFile: null,
           imagePreview: product.image
-            ? `http://localhost:5000/${product.image}`
+            ? `https://allredz.onrender.com/${product.image}`
             : hero,
         });
       }

@@ -15,6 +15,7 @@ app.use(
     origin: [
       "http://localhost:5173", // local
       "https://spices-frontend-beta.vercel.app", // live frontend Vercel
+      "https://allredz.onrender.com", // self-reference if needed
     ],
     credentials: true,
   })
