@@ -40,6 +40,8 @@ const Products = () => {
       });
 
     localStorage.setItem("cart", JSON.stringify(cart));
+    // Trigger storage event for Navbar to update
+    window.dispatchEvent(new Event("storage"));
     setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0));
 
     // ✅ Show toast alert
@@ -49,11 +51,11 @@ const Products = () => {
 
   if (isLoading)
     return (
-      <div className="text-center py-20 text-xl text-red-700">Loading...</div>
+      <div className="text-center py-20 text-xl text-red-700 font-bold">Loading...</div>
     );
   if (error)
     return (
-      <div className="text-center py-20 text-xl text-red-700">
+      <div className="text-center py-20 text-xl text-red-700 font-bold">
         Failed to load products ❌
       </div>
     );
@@ -67,7 +69,7 @@ const Products = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className="fixed top-10 left-1/2 -translate-x-1/2 bg-red-700 text-white px-6 py-3 rounded shadow-lg z-50 font-bold"
+            className="fixed top-24 left-1/2 -translate-x-1/2 bg-[#8b1c1c] text-white px-8 py-4 rounded-2xl shadow-2xl z-[60] font-bold border-2 border-white/20"
           >
             {toast.message}
           </motion.div>
@@ -75,45 +77,11 @@ const Products = () => {
       </AnimatePresence>
 
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto mb-16 gap-6">
-        <h1 className="text-4xl md:text-5xl font-black text-red-900 tracking-tight uppercase">
+      <div className="max-w-7xl mx-auto mb-16 text-center">
+        <h1 className="text-4xl md:text-6xl font-black text-red-900 tracking-tighter uppercase mb-4">
           Exclusive <span className="text-red-600">Products</span>
         </h1>
-
-        {/* Cart Icon */}
-        <div
-          className="relative cursor-pointer"
-          onClick={() => navigate("/checkout")}
-        >
-          <motion.svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 text-red-700 hover:text-red-900 transition-colors"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            animate={cartCount > 0 ? { scale: [1, 1.3, 1] } : { scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.1a1 1 0 00.9-1.5L17 13M7 13l-4-8M17 13l4-8M5 21h14a2 2 0 002-2v-5H3v5a2 2 0 002 2z"
-            />
-          </motion.svg>
-
-          {cartCount > 0 && (
-            <motion.span
-              key={cartCount}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-2 -right-2 bg-red-600 text-white font-bold rounded-full px-2 text-xs shadow-md border-2 border-[#f5e6d3]"
-            >
-              {cartCount}
-            </motion.span>
-          )}
-        </div>
+        <div className="w-24 h-1.5 bg-red-600 mx-auto rounded-full" />
       </div>
 
       {/* Products Grid */}
